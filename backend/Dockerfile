@@ -31,7 +31,11 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt -f  https://download.pytorch.org/whl/torch_stable.html
 COPY . .
 RUN python download.py
-ENTRYPOINT ["./gunicorn.sh"]
+CMD ["/bin/bash"]
+
+ENTRYPOINT -w 4 --threads 4 -b 0.0.0.0:5555
+
+#ENTRYPOINT ["./gunicorn.sh"]
 
 
 #CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5555"]
