@@ -1,0 +1,8 @@
+Dockerfile
+.git
+.gitignore
+/models
+/venv
+__pycache__/
+.DS_Store
+.idea

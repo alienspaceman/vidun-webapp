@@ -1,0 +1,22 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5555:5555"
+    volumes:
+      - "./backend:/app/server"
+  client:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+
+    ports:
+      - "3838:3838"
+    volumes:
+      - "./ui:/app/client"
+
+    depends_on:
+      - server
