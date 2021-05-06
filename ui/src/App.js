@@ -85,7 +85,7 @@ class App extends Component{
       const isLoading = this.state.isLoading;
       const textData = this.state.formData;
       const result = this.state.result;
-      const message = 'Расскажи свой сон и получи толкование от нейросети vIdun.\n Например "гулять под дождем", "убегать от большой злой собаки" и т.д. \n Подожди ~10 с (да, долго, что поделать).'
+      const message = 'Расскажи свой сон и получи толкование от нейросети vIdun.\n Например "гулять под дождем", "убегать от большой злой собаки" и т.д. \n Подожди ~10с (да, долго, что поделать).'
       console.log(result)
     return (
 
