@@ -152,17 +152,6 @@ class App extends Component{
                             placeholder={result && !isLoading?
                                 result: "Здесь будет толкование сна..."
                             }/>
-                        { isLoading ?
-                            <Spinner animation="border" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </Spinner>
-                            : <Button
-                                variant="outline-secondary"
-                                disabled={false}
-                                onClick={() => {navigator.clipboard.writeText(text_copy)}}>
-                                <FaCopy color="black" size="25" />
-                            </Button>
-                        }
                   </InputGroup>
                 </Col>
 
