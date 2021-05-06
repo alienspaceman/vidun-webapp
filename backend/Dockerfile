@@ -33,7 +33,7 @@ COPY . .
 RUN python download.py
 CMD ["/bin/bash"]
 
-ENTRYPOINT --workers 4 --threads 4 --bind 0.0.0.0:5555
+ENTRYPOINT gunicorn --workers 4 run:app --bind 0.0.0.0:5555
 
 #ENTRYPOINT ["./gunicorn.sh"]
 
