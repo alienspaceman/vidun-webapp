@@ -14,7 +14,7 @@ services:
       dockerfile: Dockerfile
 
     ports:
-      - "3838:3838"
+      - "80:80"
     volumes:
       - "./ui:/app/client"
 
