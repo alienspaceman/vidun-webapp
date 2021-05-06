@@ -8,7 +8,7 @@ import {FormControl} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaCopy } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegram, faPatreon, faGithub } from "@fortawesome/free-brands-svg-icons";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -24,7 +24,8 @@ class App extends Component{
                 description: ''
             },
             isLoading: false,
-            result: null
+            result: null,
+            text_copy: ''
     };
 }
     handleChange = (event) => {
@@ -74,7 +75,8 @@ class App extends Component{
                         console.log(response.data)
                         this.setState({
                             result: response.data.result,
-                            isLoading: false
+                            isLoading: false,
+                            text_copy: response.data.result
                         });
                     });
             console.log("after click predict result");
@@ -85,7 +87,8 @@ class App extends Component{
       const isLoading = this.state.isLoading;
       const textData = this.state.formData;
       const result = this.state.result;
-      const message = 'Расскажи свой сон и получи толкование от нейросети vIdun.\n Например "гулять под дождем", "убегать от большой злой собаки" и т.д. \n Подожди ~10с (да, долго, что поделать).'
+      const text_copy = this.state.text_copy
+      const message = 'Расскажи свой сон и получи толкование от нейросети vIdun.\n Например "гулять под дождем", "убегать от большой злой собаки" и т.д. \n Подожди ~10 с (да, долго, что поделать).'
       console.log(result)
     return (
 
@@ -148,10 +151,18 @@ class App extends Component{
                             disabled={true}
                             placeholder={result && !isLoading?
                                 result: "Здесь будет толкование сна..."
-                            }>
-
-
-                        </FormControl>
+                            }/>
+                        { isLoading ?
+                            <Spinner animation="border" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </Spinner>
+                            : <Button
+                                variant="outline-secondary"
+                                disabled={false}
+                                onClick={() => {navigator.clipboard.writeText(text_copy)}}>
+                                <FaCopy color="black" size="25" />
+                            </Button>
+                        }
                   </InputGroup>
                 </Col>
 
@@ -167,10 +178,10 @@ class App extends Component{
                         <a href="tg://resolve?domain=alienspaceman>">
                             <FontAwesomeIcon icon={faTelegram} size="2x" color="black"/>
                         </a>
-                        <a href="https://github.com/alienspaceman>">
+                        <a href="https://github.com/alienspaceman">
                             <FontAwesomeIcon icon={faGithub} size="2x" color="black"/>
                         </a>
-                        <a href="">
+                        <a href="https://www.patreon.com/vidun">
                             <FontAwesomeIcon icon={faPatreon} size="2x" color="black"/>
                         </a>
                     </div>
