@@ -11,5 +11,5 @@ FROM node:latest
 RUN yarn global add serve
 WORKDIR /usr/src/app/client
 COPY --from=builder /usr/src/app/client/build .
-EXPOSE 3838
-CMD ["serve", "-p", "3838", "-s", "."]
+EXPOSE 80
+CMD ["serve", "-p", "80", "-s", "."]
