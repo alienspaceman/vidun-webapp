@@ -19,8 +19,10 @@ logger.addHandler(ch)
 
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 device = 'cpu'
-tokenizer = GPT2Tokenizer.from_pretrained('../models/gpt2')
-model = GPT2LMHeadModel.from_pretrained('../models/gpt2').eval()
+logger.info(os.getcwd(os.listdir())
+logger.info(os.listdir('/usr/src/app/server')
+tokenizer = GPT2Tokenizer.from_pretrained('/usr/src/app/server/models/gpt2')
+model = GPT2LMHeadModel.from_pretrained('/usr/src/app/server/models/gpt2').eval()
 model = model.to(device)
 logger.info('Model is downloaded')
 
